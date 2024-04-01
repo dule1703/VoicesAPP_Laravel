@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GlasacController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -16,5 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//Form submission
+Route::post('/submit-glasac', [GlasacController::class, 'store']);
+
 
 require __DIR__.'/auth.php';
