@@ -16,6 +16,11 @@
                         {{ __('Unos glasača') }}
                     </x-nav-link>
                 </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('show.table')" :active="request()->routeIs('show.table')">
+                        {{ __('Tabela svih glasača') }}
+                    </x-nav-link>
+                </div>
             </div>
 
             <!-- Settings Dropdown -->

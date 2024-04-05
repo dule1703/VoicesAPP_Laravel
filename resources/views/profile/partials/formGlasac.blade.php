@@ -51,16 +51,35 @@
         
             <div class="mb-4">
                 <label for="poverenistvo" class="block text-gray-700 text-sm font-bold mb-2">Poverenistvo</label>
-                <input type="text" id="poverenistvo" name="poverenistvo" value="{{ old('poverenistvo') }}" class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300 @error('poverenistvo') border-red-500 @enderror" required>
+                <select id="poverenistvo" name="poverenistvo" class="border border-gray-300 rounded-md px-3 py-2 w-full focus:outline-none focus:ring focus:border-blue-300 @error('poverenistvo') border-red-500 @enderror" required>
+                    <option value="" disabled selected>Izaberite povereništvo</option>
+                    <!-- Add options dynamically here -->
+                   
+                </select>
                 @error('poverenistvo')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
             </div>
+            
             <div class="flex justify-center">
                 <button type="submit" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-auto h-auto">Ubaci glasača</button>
             </div>
-
+            {{-- Message  --}}
+            @if (session('success'))
+            <div 
+                id="success-message" 
+                x-data="{ show: true }" 
+                x-show="show" 
+                class="alert alert-success text-center"
+                x-init="setTimeout(() => { show = false; }, 3000)">
+                {{ session('success') }}
+            </div>
+            @endif
         </form>
-        
-    </div>
+        <div class="flex justify-center">
+            <button type="button" id="loadTable" class="inline-block bg-green-500 hover:bg-blue-700 text-white font-bold mt-6 py-2 px-4 rounded focus:outline-none focus:shadow-outline w-auto h-auto">Tabela svih glasača</button>
+        </div> 
+    </div> 
+  
 </div>
+
